@@ -1,0 +1,28 @@
+<p>start-page works!</p>
+// Stworzyć po 1 przycisku w game_page (exit game) i start_page (start game - submit formularz i przenieść do game_page) - wykład o łączeniu formularzy. 
+
+<form #formEl #contactForm="ngForm"
+  (submit)="onSubmit(contactForm.form.value)">
+  <br/>
+  Name
+  <input name="name"
+         minlength="3"
+         required
+         ngModel/>
+  <br/>
+  Email
+  <input name="email"
+         #emailModel="ngModel"
+         required
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+         ngModel/>
+  <p *ngIf="emailModel.touched && emailModel.invalid">
+    Your email is wrong!
+  </p>
+  <br/>
+
+  <button [disabled]="contactForm.valid === false">
+    Start Game
+  </button>
+
+</form>
