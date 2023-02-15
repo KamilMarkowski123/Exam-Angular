@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 interface FormData {
   name: string;
   email: string;

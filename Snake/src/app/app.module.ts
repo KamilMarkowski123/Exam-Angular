@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from  '@angular/core';
+
 
 import {AppComponent} from './app.component';
 import {NgxSnakeModule} from 'ngx-snake';
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
       AppComponent,
       StartPageComponent,
       GamePageComponent,
+      FormsModule
   ],
   imports: [
       BrowserModule,
