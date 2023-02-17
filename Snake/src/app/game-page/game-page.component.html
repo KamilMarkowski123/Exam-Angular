@@ -1,1 +1,156 @@
-<p>game-page works!</p>
+<div >
+    <h1>Hello {{ playerInfo.Name }}!</h1>
+    <h2 *ngIf="gameReady">Press Start</h2>
+    <h2 *ngIf="gamePaused">Game Paused</h2>
+    <h2 *ngIf="game">Game Ongoing...</h2>
+    <h2 *ngIf="gameOver">Game Over!</h2>
+    <ngx-snake
+      #game
+      (foodEaten)="onFoodEaten()"
+      (gameOver)="onGameOver()"
+    ></ngx-snake>
+    <br />
+    
+    <div>
+      <div>
+        <button
+          [disabled]="gameOver"
+          (click)="onStartButtonPressed()"
+        >
+          Start
+        </button>
+        <button
+          [disabled]="gameOver || gameReady || gamePaused"
+          (click)="onStopButtonPressed()"
+        >
+          Stop
+        </button>
+        <button
+          [disabled]="gameReady"
+          (click)="onResetButtonPressed()"
+        >
+          Reset
+        </button>
+      </div>
+      <br />
+      <div>
+        <div>
+          <button
+            [disabled]="game"
+            (click)="onUpButtonPressed()"
+          >
+            Up
+          </button>
+        </div>
+        <div>
+          <button
+            [disabled]="game"
+            (click)="onLeftButtonPressed()"
+          >
+            Left
+          </button>
+          <button
+            [disabled]="game"
+            (click)="onRightButtonPressed()"
+          >
+            Right
+          </button>
+        </div>
+        <div>
+          <button
+            [disabled]="game"
+            (click)="onDownButtonPressed()"
+          >
+            Down
+          </button>
+        </div>
+      </div>
+  
+      <br />
+    </div>
+    <br />
+    <br />
+    <small>Points: {{ pointCounter }}</small>
+    <small>Time: {{ gameplayTimer }}s</small>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+      <button (click)="sendStatus()">
+        Exit Game
+      </button>
+    </div>
+  </div>
+  <span>
+    <div>
+      <button *ngIf="!showStats" (click)="statsStatus()">
+        Show Gameplay Data
+      </button>
+      <button *ngIf="showStats" (click)="statsStatus()">
+        Hide Gameplay Data
+      </button>
+    </div>
+    <br />
+    <div *ngIf="showStats">
+      <h6 style="text-align: center">
+        Last game-basic info:
+      </h6>
+      <div style="text-align: start">
+        Player Name: {{savedCurrentGameData.playerName}}<br/>
+        Points Earned: {{savedCurrentGameData.pointsEarned}}<br/>
+        Time Played: {{savedCurrentGameData.timePlayed}}s
+      </div>
+      <div>
+        <label for="Sorting">Sorting:</label>
+        <select
+          id="Sorting"
+          [(ngModel)]="howToSort"
+        >
+          <option value="ascending">ascending</option>
+          <option value="descending">descending</option>
+        </select>
+        <label for="Sorting">Filtering:</label>
+      </div>
+      <div>
+        <select
+          id="Filtering"
+          [(ngModel)]="howToFilter"
+        >
+          <option value="show All">show All</option>
+          <option *ngFor="let item of allActionFilters" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="savedCurrentGameData.gamePlayHistory.length !== 0">
+        <ol>
+  
+          <hr/>
+          <h6 style="text-align: center">
+            Gameplay history:
+          </h6>
+          <li
+            *ngFor="
+              let item of savedCurrentGameData.gamePlayHistory
+                | filter : howToFilter
+                | sort : howToSort;
+              let i = index
+            "
+          >
+            {{ item.Action }} {{ item.Time }}s.
+          </li>
+        </ol>
+      </div>
+      <div
+        style="text-align: center"
+        *ngIf="savedCurrentGameData.gamePlayHistory.length === 0"
+      >
+        History is empty!
+        <br />
+      </div>
+      <br />
+    </div>
+  </span>
+
+  

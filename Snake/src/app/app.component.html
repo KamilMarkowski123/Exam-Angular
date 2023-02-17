@@ -1,9 +1,15 @@
-<ngx-snake #game></ngx-snake>
+<!-- {{email}}{{playerName}} -->
 
-<button (click)="game.actionStart()">Start</button>
-<button (click)="game.actionStop()">Stop</button>
-<button (click)="game.actionReset()">Reset</button>
-<button (click)="game.actionUp()">Up</button>
-<button (click)="game.actionLeft()">Left</button>
-<button (click)="game.actionRight()">Right</button>
-<button (click)="game.actionDown()">Down</button>
+<body>
+    <!-- {{changecomps}} -->
+    <!-- {{playerInfo | json}} -->
+    <app-start-page *ngIf="changecomps" 
+    (titleToGameEvent)="getStatus($event)"
+    (playerInfoEvent)="getPlayerInfo($event)"
+    (playerInfoEvent)="AddPlayerData($event)">
+    </app-start-page>
+    <app-game-page *ngIf="!changecomps" (gameToTitleEvent)="getStatus($event)"[playerInfo]="playerInfo"[playerData]="playerData"></app-game-page>
+    <!-- (playerInfoEvent)="recievePlayerInfo($event) -->
+    <!-- <small>{{playerData |json}}</small> -->
+    </body>
+    

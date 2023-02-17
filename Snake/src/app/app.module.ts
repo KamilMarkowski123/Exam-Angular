@@ -7,6 +7,8 @@ import {NgxSnakeModule} from 'ngx-snake';
 import { StartPageComponent } from './start-page/start-page.component';
 import { GamePageComponent } from './game-page/game-page.component';
 import { FormsModule } from '@angular/forms';
+import { SortPipe } from './sort.pipe';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -14,11 +16,14 @@ import { FormsModule } from '@angular/forms';
       AppComponent,
       StartPageComponent,
       GamePageComponent,
-      FormsModule
+      SortPipe,
+      FilterPipe,
+      
   ],
   imports: [
       BrowserModule,
-      NgxSnakeModule
+      NgxSnakeModule,
+      FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

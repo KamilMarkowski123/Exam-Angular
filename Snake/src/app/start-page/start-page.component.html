@@ -1,28 +1,37 @@
-<p>start-page works!</p>
-// Stworzyć po 1 przycisku w game_page (exit game) i start_page (start game - submit formularz i przenieść do game_page) - wykład o łączeniu formularzy. 
-
-<form #formEl #contactForm="ngForm"
-  (submit)="onSubmit(contactForm.form.value)">
+<div class="startPage">
+  <h1>Welcome to NG-Snake!</h1>
+  <h4>Enter your name and email below</h4>
   <br/>
+
+<form #starPageForm="ngForm">
+  <div>
+    <br/>
   Name
   <input name="name"
+         type="text"
          minlength="3"
-         required
-         ngModel/>
+         #name="ngModel"
+         required [(ngModel)]="playerInfo.Name"
+         />
+         <div *ngIf="!name.valid && wrongData">Your name must contain at least 3 letters</div>
   <br/>
-  Email
-  <input name="email"
-         #emailModel="ngModel"
-         required
-         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-         ngModel/>
-  <p *ngIf="emailModel.touched && emailModel.invalid">
-    Your email is wrong!
-  </p>
-  <br/>
+  </div>
+  <div>Email
+    <input name="email"
+          type="email"
+           #email="ngModel"
+           required
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+           ngModel/>
+           <div *ngIf="!email.valid && email.errors && wrongData">Your email is wrong!</div>
+    <br/></div>
+  
+  
 
-  <button [disabled]="contactForm.valid === false">
-    Start Game
-  </button>
+    <div>
+      <div *ngIf="starPageForm.valid; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock><button class="btn btn-primary btn-lg"(click)="sendStatus();sendPlayerinfo()">Start Game</button><br/></ng-template>
+  <ng-template #elseBlock><button class="btn btn-primary btn-lg"(click)="showErrorMessages()">Start Game</button><br/></ng-template>
+  </div>
 
 </form>
