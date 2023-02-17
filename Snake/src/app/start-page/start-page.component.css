@@ -1,0 +1,17 @@
+
+.startPage{
+    font-family: sans-serif;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:500px;
+    height:300px;
+    background-color: green;
+    border: 5px solid black;
+}
+
+h1, h4, button{
+    text-align: center;
+   
+}
