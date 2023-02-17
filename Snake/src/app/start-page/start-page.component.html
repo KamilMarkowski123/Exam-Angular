@@ -4,7 +4,7 @@
   <br/>
 
 <form #starPageForm="ngForm">
-  <div>
+  <div class="formElement">
     <br/>
   Name
   <input name="name"
@@ -13,25 +13,23 @@
          #name="ngModel"
          required [(ngModel)]="playerInfo.Name"
          />
-         <div *ngIf="!name.valid && wrongData">Your name must contain at least 3 letters</div>
-  <br/>
+         <div class="wrongData" *ngIf="!name.valid && wrongData">Your name is too short!</div>
   </div>
-  <div>Email
+  <br/>
+  <div class="formElement">Email
     <input name="email"
           type="email"
            #email="ngModel"
            required
            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
            ngModel/>
-           <div *ngIf="!email.valid && email.errors && wrongData">Your email is wrong!</div>
+           <div class="wrongData" *ngIf="!email.valid && email.errors && wrongData">Your email is wrong!</div>
     <br/></div>
-  
-  
-
-    <div>
+    <br/>
+    <div class="formElement">
       <div *ngIf="starPageForm.valid; then thenBlock else elseBlock"></div>
-  <ng-template #thenBlock><button class="btn btn-primary btn-lg"(click)="sendStatus();sendPlayerinfo()">Start Game</button><br/></ng-template>
-  <ng-template #elseBlock><button class="btn btn-primary btn-lg"(click)="showErrorMessages()">Start Game</button><br/></ng-template>
+  <ng-template #thenBlock><button (click)="sendStatus();sendPlayerinfo()">Start Game</button><br/></ng-template>
+  <ng-template #elseBlock><button (click)="showErrorMessages()">Start Game</button><br/></ng-template>
   </div>
 
 </form>

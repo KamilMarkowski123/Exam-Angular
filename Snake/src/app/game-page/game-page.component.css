@@ -1,0 +1,35 @@
+ngx-snake {
+    display: inline-block;}
+
+    .gameWindow{
+        font-family: sans-serif;
+        text-align: center;
+        position: absolute;
+        width:550px;
+        height:600px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: green;
+        border: 5px solid black;
+        
+        
+      
+    }
+.buttons {
+    float: right;
+    text-align: center;}
+
+.statisticWindow{
+    font-family: sans-serif;
+    position:absolute;
+    left:80px;
+    top:30px;
+    width:300px;
+    
+    background-color: green;
+    border: 5px solid black;}
+
+
+
+    

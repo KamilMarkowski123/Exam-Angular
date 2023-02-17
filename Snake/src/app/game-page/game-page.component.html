@@ -1,17 +1,17 @@
-<div >
+<div class="gameWindow" >
     <h1>Hello {{ playerInfo.Name }}!</h1>
-    <h2 *ngIf="gameReady">Press Start</h2>
+    <h2 *ngIf="gameReady">Press Start</h2> 
     <h2 *ngIf="gamePaused">Game Paused</h2>
-    <h2 *ngIf="game">Game Ongoing...</h2>
+    <h2 *ngIf="gameStarted"><br/></h2>
     <h2 *ngIf="gameOver">Game Over!</h2>
     <ngx-snake
       #game
       (foodEaten)="onFoodEaten()"
-      (gameOver)="onGameOver()"
+      (gameOver)="GameOver()"
     ></ngx-snake>
     <br />
     
-    <div>
+    <div class="buttons">
       <div>
         <button
           [disabled]="gameOver"
@@ -36,29 +36,33 @@
       <div>
         <div>
           <button
-            [disabled]="game"
+            [disabled]="gameReady || gamePaused ||gameOver"
             (click)="onUpButtonPressed()"
+            (keyup.38)="onUpButtonPressed()"
           >
             Up
           </button>
         </div>
         <div>
           <button
-            [disabled]="game"
+            [disabled]="gameReady || gamePaused ||gameOver"
             (click)="onLeftButtonPressed()"
+            (keyup.37)="onLeftButtonPressed()"
           >
             Left
           </button>
           <button
-            [disabled]="game"
+            [disabled]="gameReady || gamePaused ||gameOver"
             (click)="onRightButtonPressed()"
+            (keyup.39)="onRightButtonPressed()"
           >
             Right
           </button>
         </div>
         <div>
           <button
-            [disabled]="game"
+            [disabled]="gameReady || gamePaused ||gameOver"
+            (keyup.40)="onDownButtonPressed()"
             (click)="onDownButtonPressed()"
           >
             Down
@@ -71,6 +75,7 @@
     <br />
     <br />
     <small>Points: {{ pointCounter }}</small>
+    <br/>
     <small>Time: {{ gameplayTimer }}s</small>
     <br />
     <br />
@@ -82,7 +87,7 @@
       </button>
     </div>
   </div>
-  <span>
+  <span class="statisticWindow">
     <div>
       <button *ngIf="!showStats" (click)="statsStatus()">
         Show Gameplay Data

@@ -17,7 +17,7 @@ export class GamePageComponent {
   public swapToTitle: boolean = true;
   public gameReady: boolean = true;
   public gamePaused: boolean = false;
-  public game: boolean = false;
+  public gameStarted: boolean = false;
   public gameOver: boolean = false;
   public pointCounter: number = 0;
   public gameplayTimer: number = 0;
@@ -80,7 +80,7 @@ export class GamePageComponent {
       timePlayed: this.gameplayTimer,
       gamePlayHistory: this.gamePlayHistory
     };
-    // this.playerNameList.push(this.playerInfo.Name)
+   
     this.gamePlayHistory=[];
   }
   public sendStatus() {
@@ -90,9 +90,9 @@ export class GamePageComponent {
     this.pointCounter = this.pointCounter + 1;
     this.PushCurrentData("Food Eaten");
   }
-  public onGameOver() {
+  public GameOver() {
     this.gameOver = true;
-    this.game = false;
+    this.gameStarted = false;
     this.gamePaused = false;
     this.gameReady = false;
     this.stopTimer();
@@ -101,14 +101,14 @@ export class GamePageComponent {
   public GamePaused() {
     this.gameOver = false;
     this.gamePaused = true;
-    this.game = false;
+    this.gameStarted = false;
     this.gameReady = false;
     this.stopTimer();
   }
   public GameReady() {
     this.gamePaused = false;
     this.gameOver = false;
-    this.game = false;
+    this.gameStarted = false;
     this.gameReady = true;
     this.pointCounter = 0;
     this.gameplayTimer = 0;
@@ -117,7 +117,7 @@ export class GamePageComponent {
   public GameStarted() {
     this.gameOver = false;
     this.gamePaused = false;
-    this.game = true;
+    this.gameStarted = true;
     this.gameReady = false;
     this.startTimer();
   }
