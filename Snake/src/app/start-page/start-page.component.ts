@@ -8,7 +8,6 @@ import { Component,  EventEmitter, OnInit, Output} from '@angular/core';
 export class StartPageComponent {
   @Output() public titleToGameEvent = new EventEmitter<boolean>();
   @Output() public playerInfoEvent = new EventEmitter<Player>();
-  @Output() public playerDataEvent = new EventEmitter<Array<Player>>();
   public playerInfo:Player={
     Name: '',
     Email: ''
