@@ -9,6 +9,7 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { FormsModule } from '@angular/forms';
 import { SortPipe } from './sort.pipe';
 import { FilterPipe } from './filter.pipe';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,6 +25,12 @@ import { FilterPipe } from './filter.pipe';
       BrowserModule,
       NgxSnakeModule,
       FormsModule,
+      RouterModule.forRoot([{  
+        path: 'start-page', component: StartPageComponent },
+      {  path: 'game-page', component: GamePageComponent },
+      {  path: '**', redirectTo: 'start-page' },
+      
+      ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

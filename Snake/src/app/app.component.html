@@ -1,9 +1,10 @@
 <body>
-    <app-start-page *ngIf="changecomps" 
-    (titleToGameEvent)="getStatus($event)"
-    (playerInfoEvent)="getPlayerInfo($event)"
-    (playerInfoEvent)="AddPlayerData($event)">
-    </app-start-page>
-    <app-game-page *ngIf="!changecomps" (gameToTitleEvent)="getStatus($event)"[playerInfo]="playerInfo"[playerData]="playerData"></app-game-page>
-    </body>
-    
+    <router-outlet></router-outlet>
+    <!-- <app-start-page *ngIf="changecomps" 
+(titleToGameEvent)="getStatus($event)"
+(playerInfoEvent)="getPlayerInfo($event)"
+(playerInfoEvent)="AddPlayerData($event)">
+</app-start-page>
+<app-game-page *ngIf="!changecomps" (gameToTitleEvent)="getStatus($event)"[playerInfo]="playerInfo"[playerData]="playerData"></app-game-page> -->
+</body>
+  

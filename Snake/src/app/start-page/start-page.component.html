@@ -28,8 +28,11 @@
     <br/>
     <div class="formElement">
       <div *ngIf="starPageForm.valid; then thenBlock else elseBlock"></div>
-  <ng-template #thenBlock><button (click)="sendStatus();sendPlayerinfo()">Start Game</button><br/></ng-template>
+  <ng-template #thenBlock><button (click)="openGamePage()";"sendStatus();sendPlayerinfo()">Start Game</button><br/></ng-template>
   <ng-template #elseBlock><button (click)="showErrorMessages()">Start Game</button><br/></ng-template>
+  <div><button (click)="goBack()">back</button>
+    b works!</div>	
+
   </div>
 
 </form>

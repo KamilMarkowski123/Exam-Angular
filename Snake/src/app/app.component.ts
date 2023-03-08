@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Player } from './start-page/start-page.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,13 @@ import { Player } from './start-page/start-page.component';
 })
 export class AppComponent {
   title = 'Snake';
-public changecomps: boolean = true
+    constructor(private _router: Router) { }
+ 
+    openGamePage() {
+        this._router.navigate(['/GamePage']); // Sprawdzić czy nie umieścić tego w start-page.component.ts
+    }
+
+/*public changecomps: boolean = true
 public playerInfo:Player={
   Name: '',
   Email: ''
@@ -23,5 +30,5 @@ getPlayerInfo($event:Player){
 }
 AddPlayerData($event:Player){
   this.playerData.push($event)
-}
+}*/
 }
