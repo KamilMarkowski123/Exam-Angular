@@ -1,0 +1,49 @@
+
+    .stats-container{
+        background-color: green;
+        border: 3px solid rgb(175, 170, 170);
+        border-radius: 30px;
+        height: auto;
+        overflow: auto;
+    }
+    .Scores{
+    margin:10px;
+    height: 400px;
+    
+    }
+    .button-container{
+        margin: 2%;;
+        display:flex;
+        gap:5px;
+        justify-content: center;
+    }
+    .table{
+        color:azure;
+        --bs-table-hover-color: #ffc107;
+    }
+    th{ 
+        text-transform: capitalize;
+        background: rgb(28,61,33);
+        background: linear-gradient(180deg, rgba(28,61,33,1) 0%, rgba(19,36,17,1) 64%, rgba(19,38,19,1) 100%);
+    }
+    td{
+        color:azure;
+        background: rgb(44,97,51);
+        background: linear-gradient(180deg, rgba(44,97,51,1) 0%, rgba(33,60,29,1) 64%, rgba(41,82,39,1) 100%);
+    }
+    .Select-bg-Color{
+        color:azure;
+        text-align: center;
+        background: rgb(45,94,97);
+        background: linear-gradient(180deg, rgba(45,94,97,1) 6%, rgba(29,62,50,1) 61%, rgba(19,38,19,1) 94%);
+    }
+    option{
+        color:black;
+    }
+    .select-container{
+        display:flex;
+        flex-direction: column;
+        align-content:center;
+        width:60%;
+        margin:10px auto;
+    }

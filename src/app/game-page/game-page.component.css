@@ -1,0 +1,106 @@
+:host {
+    min-height: 500px;
+    text-align: center;
+	position: relative;
+	margin:1% auto;
+}
+
+.controls {
+    float: right;
+    text-align: center;
+}
+.Game-Container{
+margin:1% auto;
+display:grid;
+column-gap: 2%;
+justify-items:center;
+align-items: center;
+justify-content:center;
+grid-template-columns: auto;
+}
+ngx-snake {
+    display: inline-block;
+	margin-bottom:20px;
+}
+.Game{
+	grid-column: 2/3;
+    background-color: green;
+    border: 3px solid rgb(175, 170, 170);
+    border-radius: 25px;
+	width:700px
+}
+.right-container{
+	grid-column: 3/4;
+	align-self: start;
+	justify-content: start;
+	width:430px;
+}
+.left-container{
+	grid-column: 1/2;
+	align-self: start;
+	justify-content: end;
+	width:430px;
+}
+h1{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.retroBtn {
+	background: #7C7C7C;
+	border-bottom: 6px inset rgba(0,0,0,.5);
+	border-left: 6px inset rgba(0,0,0,.5);
+	border-right: 6px inset rgba(255,255,255,.5);
+	border-top: 6px inset rgba(255,255,255,.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1rem;
+	margin: 1rem;
+	min-width: 80px;
+    max-width:  150px;
+	padding: .5rem;
+	text-transform: uppercase;
+	width: auto;
+    font-family: 'VT323', monospace;
+	
+	&:focus,
+	&:hover {
+		background: #BCBCBC;
+	}
+}
+
+.retroBtn.red {
+	background: #881400;
+	
+	&:focus,
+	&:hover {
+		background: #A81000;
+	}
+}
+
+.retroBtn.green {
+	background: #014101;
+	
+	&:focus,
+	&:hover {
+		background: #035a03;
+	}
+}
+
+.retroBtn.blue {
+	background: hsl(214, 72%, 43%);
+	
+	&:focus,
+	&:hover {
+		background: #0000FC;
+	}
+}
+    .retroBtn.contrast {
+        background: hsl(0, 0%, 0%);
+        
+        &:focus,
+        &:hover {
+            background: #1c1c1d;
+        }
+}

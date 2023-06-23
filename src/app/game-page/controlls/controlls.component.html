@@ -1,0 +1,60 @@
+
+<div class="Container">
+      <div class="Util-Buttons">
+      <button
+        class="btn btn-dark btn-lg Util"
+        [disabled]="GameStatus.isGameOver"
+        (click)="onStartButtonPressed()"
+      >
+        Start
+      </button>
+      <button
+        class="btn btn-dark btn-lg Util"
+        [disabled]="GameStatus.isGameOver || GameStatus.isReady || GameStatus.isPaused"
+        (click)="onStopButtonPressed()"
+      >
+        Stop
+      </button>
+      <button
+        class="btn btn-dark btn-lg Util"
+        [disabled]="GameStatus.isReady"
+        (click)="onResetButtonPressed()"
+      >
+        Reset
+      </button>
+    </div>
+        <div class="Controls">
+        <button
+          id="UP"
+          class="btn btn-dark btn-lg Ctrl"
+          [disabled]="!GameStatus.isGo"
+          (click)="onUpButtonPressed()"
+        >
+          Up
+        </button>
+        <div class="Left-Right">
+        <button
+          class="btn btn-dark btn-lg Ctrl"
+          [disabled]="!GameStatus.isGo"
+          (click)="onLeftButtonPressed()"
+        >
+          Left
+        </button>
+        <button
+          class="btn btn-dark btn-lg Ctrl"
+          [disabled]="!GameStatus.isGo"
+          (click)="onRightButtonPressed()"
+        >
+          Right
+        </button>
+      </div>
+        <button
+        id="DOWN"
+          class="btn btn-dark btn-lg Ctrl"
+          [disabled]="!GameStatus.isGo"
+          (click)="onDownButtonPressed()"
+        >
+          Down
+        </button>
+  </div>
+  </div>

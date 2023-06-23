@@ -1,0 +1,47 @@
+
+.titlePage{
+    background-color: green;
+    border: 3px solid rgb(175, 170, 170);
+    border-radius: 25px;
+    width:30%;
+    height:450px;
+    position: relative;
+    margin: 2% auto;
+}
+h1,h5,label{
+    text-align: center;
+
+}
+.playerFormContainer{
+    display:grid;
+    justify-content: center;
+}
+
+label{
+    display: block;
+}
+.alert{
+    margin-bottom: 1px;
+    line-height:30px;
+    padding:0px 15px;
+    text-align: center;
+    width:100%;
+
+}
+button {
+    margin:0 auto;
+    display:block;
+}
+#playerInfo{
+    width:99%;
+    margin:auto;
+}
+.palette{
+    display: inline-block;
+    text-align: center;
+}
+.start-button{
+    margin-top: 50px;
+    display:block;
+    margin-bottom: 2%;
+}

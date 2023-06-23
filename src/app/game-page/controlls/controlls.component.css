@@ -1,0 +1,36 @@
+.Container{
+    margin-bottom: 10px;
+}
+.Util-Buttons{
+display:flex;
+justify-content: center;
+gap:5px;
+margin-bottom: 20px;
+}
+.Util{
+    width:15%;
+}
+.Controls{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.Ctrl{
+    width:20%;
+}
+#UP{
+    align-self:center;
+    margin-bottom: 5px;
+}
+.Left-Right{
+    display:flex;
+    justify-content: center;
+    gap:5px;
+    margin-bottom: 5px;
+    
+}
+#DOWN{
+    align-self:center;
+    margin-bottom: 5px;
+}

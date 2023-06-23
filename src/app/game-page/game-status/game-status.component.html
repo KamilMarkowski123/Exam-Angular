@@ -1,0 +1,10 @@
+<div>
+    <h2 *ngIf="GameStatus.isReady">Game Ready!</h2>
+    <h2 *ngIf="GameStatus.isGo">Game Ongoing...</h2>
+    <h2 *ngIf="GameStatus.isPaused">Game Stopped!</h2>
+    <h2 *ngIf="GameStatus.isGameOver">Game Over!Reset to try again!</h2>
+    <div class="Time-And-Points">
+    <small>Points: {{ CurrentGameData.pointsEarned }}</small>
+    <small>Time: {{ CurrentGameData.timePlayed }}s</small>
+  </div>
+  </div>

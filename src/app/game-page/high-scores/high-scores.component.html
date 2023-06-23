@@ -1,0 +1,87 @@
+<div class="button-container">
+    <button
+      *ngIf="!showScores"
+      [ngClass]="palette==='normal_colors'?'retroBtn green':'retroBtn contrast'"
+      (click)="handleShowScores()"
+    >
+      Show Scores
+    </button>
+    <button *ngIf="showScores" [ngClass]="palette==='normal_colors'?'retroBtn green':'retroBtn contrast'" (click)="handleShowScores()">
+      Hide Scores
+    </button>
+  </div>
+  <div class="stats-container" *ngIf="showScores">
+    <div class="button-container">
+      <button [ngClass]="palette==='normal_colors'?'btn btn-success ':'btn btn-dark '" (click)="handleShowHighScores()">
+        High Scores
+      </button>
+      <button [ngClass]="palette==='normal_colors'?'btn btn-success ':'btn btn-dark '" (click)="handleShowMycores()">
+        My Scores
+      </button>
+    </div>
+    <hr />
+    <div class="select-container">
+      <label for="Sorting">Sorting:</label>
+      <select
+        id="Sorting"
+        class="form-select form-select-lg mb-3 Select-bg-Color"
+        [(ngModel)]="howToSort"
+      >
+        <option value="ascending">ascending</option>
+        <option value="descending">descending</option>
+      </select>
+    </div>
+    <div *ngIf="showHighScores" class="Scores">
+      <h6 style="text-align: center">Best global scores:</h6>
+      <table class="table table-bordered table-hover table-sm responsive">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let score of highScores
+                | sort : howToSort : 'score'
+            "
+          >
+            <td>{{ score.rank }}</td>
+            <td>{{ score.name }}</td>
+            <td>{{ score.score }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="showMyScores" class="Scores">
+      <h6 style="text-align: center">Your best scores:</h6>
+      <table class="table table-bordered table-hover table-sm responsive">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let score of highScores
+                | filter : 'name' : playerInfo.name
+                | sort : howToSort : 'score';
+              let i = index
+            "
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ score.name }}</td>
+            <td>{{ score.score }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!showHighScores && !showMyScores" class="Scores">
+      <h6 style="text-align: center">Pick scores to Display!</h6>
+    </div>
+  </div>

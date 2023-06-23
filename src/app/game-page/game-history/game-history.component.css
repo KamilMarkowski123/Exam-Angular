@@ -1,0 +1,53 @@
+.stats-container{
+    background-color: green;
+    border: 3px solid rgb(175, 170, 170);
+    border-radius: 25px
+}
+.gamePlay{
+    overflow: auto;
+    height: 300px;
+    width: 380px;
+    text-align: center;
+    margin:auto;
+}
+.StatsContainer{
+    width: 430px;
+}
+.button-container{
+    width: 420px;
+}
+.select-container{
+    display:flex;
+    justify-content: center;
+    gap:2%;
+}
+.table{
+    color:azure;
+    --bs-table-hover-color: #ffc107;
+}
+.card{
+    width: 60%;
+    margin:2% auto;
+}
+th,.card-header{ 
+    text-transform: capitalize;
+    background: rgb(28,61,33);
+    background: linear-gradient(180deg, rgba(28,61,33,1) 0%, rgba(19,36,17,1) 64%, rgba(19,38,19,1) 100%);
+}
+td,.list-group-item{
+    color:azure;
+    background: rgb(44,97,51);
+    background: linear-gradient(180deg, rgba(44,97,51,1) 0%, rgba(33,60,29,1) 64%, rgba(41,82,39,1) 100%);
+}
+h5{
+    text-transform: capitalize;
+}
+.Select-bg-Color{
+    color:azure;
+    text-align: center;
+    background: rgb(45,94,97);
+    background: linear-gradient(180deg, rgba(45,94,97,1) 6%, rgba(29,62,50,1) 61%, rgba(19,38,19,1) 94%);
+}
+option{
+    color:black;
+}

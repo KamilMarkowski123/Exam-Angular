@@ -1,0 +1,55 @@
+<div class="titlePage">
+  <h1 style="text-align: center;">Snake Game Intro Page</h1>
+  <h5>Please type in your player info below</h5>
+  <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Player Name</label>
+      <input
+        id="playerInfo"
+        name="name"
+        type="text"
+        class="form-control form-control-sm"
+        formControlName="name"
+      />
+      <div
+        class="alert alert-warning"
+        *ngIf="!playerForm.controls['name'].valid && !isInfoValid"
+      >
+        Your name must contain at least 5 characters
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="auth_token">Student ID</label>
+      <input
+        id="playerInfo"
+        name="auth_token"
+        type="text"
+        class="form-control form-control-sm"
+        formControlName="auth_token"
+      />
+      <div
+        class="alert alert-warning"
+        *ngIf="!playerForm.controls['auth_token'].valid && !isInfoValid"
+      >
+        Your ID must contain at least 4 characters
+      </div>
+      <label for="palette">Choose a color scheme:</label>
+      <select
+        id="palette"
+        class="form-select form-select-sm mb-2"
+        formControlName="paletteSelected"
+      >
+        <option value="normal_colors">normal colors</option>
+        <option value="high_contrast">high contrast</option>
+      </select>
+    </div>
+    <div class="start-button">
+      <button
+        [ngClass]="playerForm.value.paletteSelected === 'normal_colors' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+        type="submit"
+      >
+        Start Game
+      </button>
+    </div>
+  </form>
+</div>

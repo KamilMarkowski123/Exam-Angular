@@ -1,0 +1,79 @@
+<div class="button-container">
+    <button *ngIf="!showStats" [ngClass]="palette==='normal_colors'?'retroBtn green':'retroBtn contrast'" (click)="statsStatus()">
+      Show Gameplay Data
+    </button>
+    <button *ngIf="showStats" [ngClass]="palette==='normal_colors'?'retroBtn green':'retroBtn contrast'" (click)="statsStatus()">
+      Hide Gameplay Data
+    </button>
+  </div>
+  <div class="stats-container" *ngIf="showStats">
+    <div class="card bg-transparent border-light">
+      <div class="card-header border-light">Last game basic info:</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item ">Player Name: {{ CurrentGameData.playerName }}</li>
+        <li class="list-group-item ">Points Earned: {{ CurrentGameData.pointsEarned }}</li>
+        <li class="list-group-item ">Time Played: {{ CurrentGameData.timePlayed }}s</li>
+      </ul>
+    </div>
+    <hr />
+    <h5 style="text-align: center">Gameplay history:</h5>
+    <div class="select-container">
+    <div>
+      <label for="Sorting">Sort order:</label>
+      <select
+        id="Sorting"
+        class="form-select form-select-lg mb-3 Select-bg-Color"
+        [(ngModel)]="howToSort"
+      >
+        <option value="ascending">ascending</option>
+        <option value="descending">descending</option>
+      </select>
+    </div>
+    <div>
+      <label for="Filtering">Filter by action:</label>
+      <select
+        id="Filtering"
+        class="form-select form-select-lg mb-3 Select-bg-Color"
+        [(ngModel)]="howToFilter"
+      >
+        <option value="show All">show All</option>
+        <option *ngFor="let item of allActionFilters" [value]="item">
+          {{ item }}
+        </option>
+      </select>
+    </div>
+  </div>
+    <div *ngIf="CurrentGameData.gamePlayHistory.length !== 0" class="gamePlay">
+      <table class="table table-bordered table-hover table-sm responsive">
+        <thead>
+          <tr>
+            <th scope="col">index</th>
+            <th scope="col">Action taken</th>
+            <th scope="col">Time Stamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of CurrentGameData.gamePlayHistory
+                | filter : 'Action' : howToFilter
+                | sort : howToSort : 'Time';
+              let i = index
+            "
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.Action }}</td>
+            <td>{{ item.Time }}s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="gamePlay"
+      style="text-align: center"
+      *ngIf="CurrentGameData.gamePlayHistory.length === 0"
+    >
+      Game history is empty!
+    </div>
+  </div>
+  
