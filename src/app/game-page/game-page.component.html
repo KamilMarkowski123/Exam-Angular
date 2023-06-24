@@ -1,9 +1,11 @@
 <div class="Game-Container">
   <app-high-scores class="left-container"[palette]="palette" [highScores]="highScores"[playerInfo]="playerInfo"></app-high-scores>
-<div class="Game">
+<div class="Game"
+[style.background-color]="gameBackgroundColor">
   <h1>Hello {{ playerInfo.name }}!</h1>
   <app-game-status [GameStatus]="GameStatus"
   [CurrentGameData]="CurrentGameData"
+  [style.background-color]="gameBackgroundColor"
 ></app-game-status>
   <ngx-snake
   class={{this.palette}}
@@ -23,8 +25,8 @@
     <button [ngClass]="palette==='normal_colors'?'retroBtn green':'retroBtn contrast'" (click)="backToTitle()">
       exit to Title Page
     </button>
-    <button *ngIf="palette==='normal_colors'" class="retroBtn contrast" (click)="onPaletteChange()">Swap to Black & White</button>
-    <button *ngIf="palette==='high_contrast'" class="retroBtn green" (click)="onPaletteChange()">Swap to Colors</button>
+    <button *ngIf="palette==='normal_colors'" class="retroBtn contrast" (click)="onPaletteChange()" (click)="swapBackgroundColor()">Swap to Black & White</button>
+    <button *ngIf="palette==='high_contrast'" class="retroBtn green" (click)="onPaletteChange()" [ngClass]="palette==='high_contrast'?'retroBtn green':'retroBtn contrast'">Swap to Colors</button>
   </div>
 </div>
 <app-game-history  class="right-container" [CurrentGameData]="CurrentGameData" [palette]="palette"></app-game-history>

@@ -37,9 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path:'TitlePage',component: StartPageComponent},
+      {path:'StartPage',component: StartPageComponent},
       {path:'GamePage/:palette',component: GamePageComponent,canActivate: [PlayerDataGuardService]},
-      {path:'',redirectTo: '/TitlePage', pathMatch: 'full' },
+      {path:'',redirectTo: '/StartPage', pathMatch: 'full' },
   
     ]),
     HttpClientModule

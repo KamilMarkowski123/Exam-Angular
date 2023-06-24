@@ -9,6 +9,6 @@ export const PlayerDataGuardService = () => {
   if (playerDataservice.playerSubmited() || isSubmitted === 'true') {
     return true;
   } else {
-    return router.parseUrl('/TitlePage');
+    return router.parseUrl('/StartPage');
   }
 };

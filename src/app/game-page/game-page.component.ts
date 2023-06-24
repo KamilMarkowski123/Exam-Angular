@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2  } from '@angular/core';
 import { NgxSnakeComponent } from 'ngx-snake';
 import { PlayerDataService } from '../player-data.service';
 import {
@@ -22,12 +22,14 @@ export class GamePageComponent {
   @ViewChild(NgxSnakeComponent)
   public snake!: NgxSnakeComponent;
   public Controller!: ControllsComponent;
+  public gameBackgroundColor: string = 'green';
   public GameStatus: GameStatus = {
     isReady: true,
     isGo: false,
     isPaused: false,
     isGameOver: false,
   };
+  
   public playerInfo: Player = {
     name: '',
     auth_token: '',
@@ -44,6 +46,7 @@ export class GamePageComponent {
   public palette:string='';
   public isHighContrast:boolean=false;
   constructor(
+    private renderer: Renderer2,
     private _router: Router,
     private _route:ActivatedRoute,
     private _playerData: PlayerDataService,
@@ -51,7 +54,15 @@ export class GamePageComponent {
   ) {
     this.saveSelectedPalette()
   }
+  public swapBackgroundColor() {
+    if (this.gameBackgroundColor === 'green') {
+      this.gameBackgroundColor = 'rgb(175, 170, 170)';
+    } else {
+      this.gameBackgroundColor = 'green';
+    }
+  }
   ngOnInit(): void {
+    this.palette = localStorage.getItem('palette') || 'normal_colors';
     this.highScores = this._highScores.highScores;
     this.playerInfo = this._playerData.readData();
     this.CurrentGameData.playerName = this.playerInfo.name; 
@@ -69,18 +80,22 @@ export class GamePageComponent {
       this.palette=params['palette']})
 
   }
-  public onPaletteChange(){
-    if(this.palette==='normal_colors')
-    {
-      localStorage.setItem('pallete',`high_contrast`)
-      this._router.navigate(['/GamePage',`high_contrast`]);}
-    else 
-    {localStorage.setItem('pallete',`normal_colors`)
-      this._router.navigate(['/GamePage','normal_colors']);}
+  public onPaletteChange() {
+    if (this.palette === 'normal_colors') {
+      localStorage.setItem('palette', 'high_contrast');
+      this._router.navigate(['/GamePage', 'high_contrast']);
+      this.renderer.addClass(document.body, 'high-contrast');
+      this.renderer.removeClass(document.body, 'normal-colors');
+    } else {
+      localStorage.setItem('palette', 'normal_colors');
+      this._router.navigate(['/GamePage', 'normal_colors']);
+      this.renderer.removeClass(document.body, 'high-contrast');
+      this.renderer.addClass(document.body, 'normal-colors');
+    }
   }
   public backToTitle() {
     localStorage.setItem('isInfoSubmitted',`false`)
-    this._router.navigate(['/TitlePage']);
+    this._router.navigate(['/StartPage']);
   }
   public loadScoresData() {
     this._highScores.loadScores().subscribe({
